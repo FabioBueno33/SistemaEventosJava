@@ -24,11 +24,27 @@ public class Evento {
     }
 
     public boolean jaOcorreu() {
-        return horario.isBefore(LocalDateTime.now());
+        return horario.plusHours(2).isBefore(LocalDateTime.now());
     }
 
     public LocalDateTime getHorario() {
         return horario;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public String getDescricao() {
+        return descricao;
     }
 
     @Override
