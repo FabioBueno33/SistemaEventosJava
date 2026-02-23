@@ -1,0 +1,45 @@
+@startuml
+class Usuario {
+  - nome : String
+  - email : String
+  - cidade : String
+  - eventosConfirmados : List<Evento>
+  + confirmarEvento(Evento)
+  + cancelarEvento(Evento)
+}
+
+class Evento {
+  - nome : String
+  - endereco : String
+  - categoria : Categoria
+  - horario : LocalDateTime
+  - descricao : String
+  + estaOcorrendo() : boolean
+  + jaOcorreu() : boolean
+}
+
+class EventoService {
+  - eventos : List<Evento>
+  + adicionarEvento(Evento)
+  + listarEventosOrdenados() : List<Evento>
+}
+
+class Main {
+  + main(String[])
+}
+
+enum Categoria {
+  FESTA
+  ESPORTIVO
+  SHOW
+  CULTURAL
+  OUTROS
+}
+
+Usuario "1" -- "0..*" Evento
+EventoService "1" -- "0..*" Evento
+Main --> EventoService
+Main --> Usuario
+Evento --> Categoria
+
+@enduml
